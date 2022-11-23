@@ -1,0 +1,6 @@
+name: MixAnything
+version: 1.0.0
+main: me.dannusnl.mixanything.MixAnything
+api-version: 1.19
+author: DannusNL
+description: Mix Anything in Minecraft
