@@ -1,9 +1,6 @@
 package me.dannusnl.mixanything.flammablediamond;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
-import org.bukkit.Particle;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Fireball;
@@ -26,7 +23,7 @@ public class PickaxeThrow implements Listener {
 
     @EventHandler
     public void throwPickaxe(PlayerInteractEvent e) {
-        if (!e.getAction().equals(Action.RIGHT_CLICK_AIR)) return;
+        if (!(e.getAction().equals(Action.RIGHT_CLICK_BLOCK) || e.getAction().equals(Action.RIGHT_CLICK_AIR))) return;
         if (e.getItem() == null) return;
         if (!e.getItem().getType().equals(Material.NETHERITE_PICKAXE)) return;
         if (!e.getItem().hasItemMeta()) return;
@@ -47,6 +44,17 @@ public class PickaxeThrow implements Listener {
         if (fireballs.isEmpty()) return;
 
         fireballs.remove(e.getEntity());
+
+        Location loc = e.getLocation();
+        double radius = 1.5;
+        for (double x = loc.getX() - radius; x < loc.getX() + radius; x++ ) {
+            for (double y = loc.getY() - radius; y < loc.getY() + radius; y++) {
+                for (double z = loc.getZ() - radius; z < loc.getZ() + radius; z++) {
+                    Location l = new Location(loc.getWorld(), x, y, z);
+                    if (l.getBlock().getType().equals(Material.BEDROCK)) l.getBlock().setType(Material.VOID_AIR);
+                }
+            }
+        }
 
         for (Block block : e.blockList()) {
             Collection<ItemStack> drops = block.getDrops();

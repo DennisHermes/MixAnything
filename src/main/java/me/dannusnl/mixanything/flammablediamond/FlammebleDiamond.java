@@ -5,6 +5,7 @@ import me.dannusnl.mixanything.PreventMerge;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Particle;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -44,12 +45,11 @@ public class FlammebleDiamond implements Listener {
         if (e.getItem() == null) return;
         if (!e.getItem().getType().equals(Material.FLINT_AND_STEEL)) return;
 
-        if (!e.getClickedBlock().getType().equals(Material.TNT)) return;
         Collection<Entity> entities = e.getClickedBlock().getWorld().getNearbyEntities(e.getClickedBlock().getLocation().add(0.5, -0.4, 0.5), 0.3, 0.3, 0.3);
         if (entities.isEmpty()) return;
         for (Entity ent : entities) {
             if (ent.getType().equals(EntityType.ARMOR_STAND)) {
-                if (!ent.getCustomName().equals("FlammebleDiamondBlock")) return;
+                if (!ent.getCustomName().equals("FlammebleDiamondBlock")) continue;
 
                 e.setCancelled(true);
                 ent.remove();
@@ -79,6 +79,7 @@ public class FlammebleDiamond implements Listener {
                 if (random > 1) {
                     Location newLoc = new Location(loc.getWorld(), x, loc.getY(), z);
                     newLoc.getWorld().dropItemNaturally(newLoc, new ItemBuilder().flammebleDiamond());
+                    newLoc.getWorld().spawnParticle(Particle.LAVA, newLoc, 10, 0.5, 0.5, 0.5, 0.5);
                 }
             }
         }
