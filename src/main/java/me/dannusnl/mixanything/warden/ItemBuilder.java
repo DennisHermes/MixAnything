@@ -21,9 +21,9 @@ public class ItemBuilder {
     }
 
     public ItemStack wardenHead() {
-        ItemStack item = new ItemStack(Material.SKELETON_SKULL);
+        ItemStack item = new ItemStack(Material.RABBIT_FOOT);
         ItemMeta meta = item.getItemMeta();
-        meta.setCustomModelData(100);
+        meta.setCustomModelData(800);
         meta.setDisplayName(ChatColor.GOLD + "Warden Head");
         item.setItemMeta(meta);
         return item;

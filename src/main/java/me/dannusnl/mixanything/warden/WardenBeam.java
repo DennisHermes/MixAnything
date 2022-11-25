@@ -14,10 +14,10 @@ public class WardenBeam implements Listener {
     public void wardenBeam(Player p) {
         if (!p.isSneaking()) return;
         if (p.getEquipment().getHelmet() == null) return;
-        if (p.getEquipment().getHelmet().getType() != Material.SKELETON_SKULL) return;
+        if (p.getEquipment().getHelmet().getType() != Material.RABBIT_FOOT) return;
         if (!p.getEquipment().getHelmet().hasItemMeta()) return;
         if (!p.getEquipment().getHelmet().getItemMeta().hasCustomModelData()) return;
-        if (p.getEquipment().getHelmet().getItemMeta().getCustomModelData() != 100) return;
+        if (p.getEquipment().getHelmet().getItemMeta().getCustomModelData() != 800) return;
 
         for (Entity ent : p.getNearbyEntities(50, 50, 50)) {
             if (ent instanceof LivingEntity) {

@@ -11,6 +11,15 @@ public class ItemBuilder {
 
     }
 
+    public ItemStack voidBucket() {
+        ItemStack item = new ItemStack(Material.RABBIT_FOOT);
+        ItemMeta meta = item.getItemMeta();
+        meta.setCustomModelData(900);
+        meta.setDisplayName(ChatColor.DARK_GRAY + "Void Bucket");
+        item.setItemMeta(meta);
+        return item;
+    }
+
     public ItemStack jarOfTheoreticalSpace() {
         ItemStack jar = new ItemStack(Material.MILK_BUCKET);
         ItemMeta meta = jar.getItemMeta();

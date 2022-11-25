@@ -6,11 +6,16 @@ import me.dannusnl.mixanything.flammablediamond.PickaxeRecipeBuilder;
 import me.dannusnl.mixanything.flammablediamond.PickaxeThrow;
 import me.dannusnl.mixanything.luckyfoodblock.LuckyEating;
 import me.dannusnl.mixanything.luckyfoodblock.LuckyFoodBlock;
+import me.dannusnl.mixanything.mixingequipment.EquipmentPlacing;
+import me.dannusnl.mixanything.mixingequipment.MixingPotClick;
 import me.dannusnl.mixanything.mixingequipment.RecipeBuilder;
+import me.dannusnl.mixanything.spikyiron.DamageMechanic;
 import me.dannusnl.mixanything.spikyiron.SpikeyRecipeBuilder;
 import me.dannusnl.mixanything.theoreticalspace.ActivateSpaceBuffs;
 import me.dannusnl.mixanything.theoreticalspace.BlockRemoving;
 import me.dannusnl.mixanything.theoreticalspace.GuiUse;
+import me.dannusnl.mixanything.theoreticalspace.VoidBucket;
+import me.dannusnl.mixanything.warden.EquipHead;
 import me.dannusnl.mixanything.warden.WardenBeam;
 import me.dannusnl.mixanything.warden.WardenHorn;
 import me.dannusnl.mixanything.warden.WardenReward;
@@ -54,10 +59,15 @@ public final class MixAnything extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new WardenHorn(), this);
         getServer().getPluginManager().registerEvents(new WardenReward(), this);
         getServer().getPluginManager().registerEvents(new WardenBeam(), this);
+        getServer().getPluginManager().registerEvents(new EquipHead(), this);
 
+        getServer().getPluginManager().registerEvents(new VoidBucket(), this);
         getServer().getPluginManager().registerEvents(new ActivateSpaceBuffs(), this);
         getServer().getPluginManager().registerEvents(new GuiUse(), this);
         getServer().getPluginManager().registerEvents(new BlockRemoving(), this);
+
+        getServer().getPluginManager().registerEvents(new EquipmentPlacing(), this);
+        getServer().getPluginManager().registerEvents(new MixingPotClick(), this);
 
         getServer().getPluginManager().registerEvents(new UnlockRecipes(), this);
         getServer().getPluginManager().registerEvents(new PreventMerge(), this);
@@ -65,7 +75,9 @@ public final class MixAnything extends JavaPlugin {
         Bukkit.getScheduler().scheduleSyncRepeatingTask(this, () -> {
             for (Player p : Bukkit.getOnlinePlayers()) {
                 WardenBeam wardenBeam = new WardenBeam();
+                DamageMechanic damageMechanic = new DamageMechanic();
                 wardenBeam.wardenBeam(p);
+                damageMechanic.damageMechanic(p);
             }
         }, 0, 10);
 
