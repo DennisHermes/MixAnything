@@ -34,7 +34,7 @@ public class ItemBuilder {
     public ItemStack spikeyIronChestplate() {
         ItemStack item = new ItemStack(Material.NETHERITE_CHESTPLATE);
         ItemMeta meta = item.getItemMeta();
-        meta.setCustomModelData(700);
+        meta.setCustomModelData(100);
         meta.setDisplayName(ChatColor.WHITE + "Spikey Iron Chestplate");
         meta.addEnchant(Enchantment.THORNS, 10, true);
         meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 5, true);

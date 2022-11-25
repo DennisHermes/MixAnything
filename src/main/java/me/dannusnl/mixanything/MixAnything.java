@@ -8,6 +8,9 @@ import me.dannusnl.mixanything.luckyfoodblock.LuckyEating;
 import me.dannusnl.mixanything.luckyfoodblock.LuckyFoodBlock;
 import me.dannusnl.mixanything.mixingequipment.RecipeBuilder;
 import me.dannusnl.mixanything.spikyiron.SpikeyRecipeBuilder;
+import me.dannusnl.mixanything.theoreticalspace.ActivateSpaceBuffs;
+import me.dannusnl.mixanything.theoreticalspace.BlockRemoving;
+import me.dannusnl.mixanything.theoreticalspace.GuiUse;
 import me.dannusnl.mixanything.warden.WardenBeam;
 import me.dannusnl.mixanything.warden.WardenHorn;
 import me.dannusnl.mixanything.warden.WardenReward;
@@ -51,6 +54,10 @@ public final class MixAnything extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new WardenHorn(), this);
         getServer().getPluginManager().registerEvents(new WardenReward(), this);
         getServer().getPluginManager().registerEvents(new WardenBeam(), this);
+
+        getServer().getPluginManager().registerEvents(new ActivateSpaceBuffs(), this);
+        getServer().getPluginManager().registerEvents(new GuiUse(), this);
+        getServer().getPluginManager().registerEvents(new BlockRemoving(), this);
 
         getServer().getPluginManager().registerEvents(new UnlockRecipes(), this);
         getServer().getPluginManager().registerEvents(new PreventMerge(), this);
