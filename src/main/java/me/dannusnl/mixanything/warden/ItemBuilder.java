@@ -7,7 +7,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class ItemBuilder {
 
-    ItemBuilder() {
+    public ItemBuilder() {
 
     }
 

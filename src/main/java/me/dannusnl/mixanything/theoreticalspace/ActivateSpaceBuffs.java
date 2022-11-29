@@ -1,5 +1,7 @@
 package me.dannusnl.mixanything.theoreticalspace;
 
+import me.dannusnl.mixanything.MixAnything;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.attribute.Attribute;
@@ -19,6 +21,11 @@ public class ActivateSpaceBuffs implements Listener {
         if (!e.getItem().hasItemMeta()) return;
         if (!e.getItem().getItemMeta().hasCustomModelData()) return;
         if (e.getItem().getItemMeta().getCustomModelData() != 100) return;
+
+        Bukkit.getScheduler().runTaskLater(MixAnything.instance, () -> {
+            me.dannusnl.mixanything.mixingequipment.ItemBuilder itemBuilder = new me.dannusnl.mixanything.mixingequipment.ItemBuilder();
+            e.getPlayer().getEquipment().setItemInMainHand(itemBuilder.emptyJar());
+        }, 2);
 
         spaceBuffsActive = true;
         AttributeInstance attribute = e.getPlayer().getAttribute(Attribute.GENERIC_MAX_HEALTH);

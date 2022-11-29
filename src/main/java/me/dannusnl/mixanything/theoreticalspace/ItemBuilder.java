@@ -12,20 +12,12 @@ public class ItemBuilder {
     }
 
     public ItemStack voidBucket() {
-        ItemStack item = new ItemStack(Material.RABBIT_FOOT);
+        ItemStack item = new ItemStack(Material.IRON_NUGGET);
         ItemMeta meta = item.getItemMeta();
-        meta.setCustomModelData(900);
+        meta.setCustomModelData(100);
         meta.setDisplayName(ChatColor.DARK_GRAY + "Void Bucket");
         item.setItemMeta(meta);
         return item;
-    }
-
-    public ItemStack jarOfTheoreticalSpace() {
-        ItemStack jar = new ItemStack(Material.MILK_BUCKET);
-        ItemMeta meta = jar.getItemMeta();
-        meta.setDisplayName(ChatColor.LIGHT_PURPLE + "Jar of Theoretical Space");
-        jar.setItemMeta(meta);
-        return jar;
     }
 
     public ItemStack GUI() {

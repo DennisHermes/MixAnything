@@ -13,9 +13,12 @@ import org.bukkit.entity.TNTPrimed;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Collection;
 
@@ -30,11 +33,28 @@ public class FlammebleDiamond implements Listener {
         if (e.getItemInHand().getItemMeta().getCustomModelData() != 100) return;
 
         ArmorStand ar = e.getBlockPlaced().getWorld().spawn(e.getBlockPlaced().getLocation().add(0.5, -0.4, 0.5), ArmorStand.class);
-        ar.getEquipment().setHelmet(new ItemBuilder().flammebleDiamondBlock());
+        ItemBuilder itemBuilder = new ItemBuilder();
+        ar.getEquipment().setHelmet(itemBuilder.flammebleDiamondBlock());
         ar.setMarker(true);
         ar.setVisible(false);
         ar.setCustomName("FlammebleDiamondBlock");
         ar.setCustomNameVisible(false);
+    }
+
+    @EventHandler
+    public void onTntRemove(BlockBreakEvent e) {
+        if (e.getBlock().getType() != Material.TNT) return;
+        Collection<Entity> entities = e.getBlock().getWorld().getNearbyEntities(e.getBlock().getLocation().add(0.5, -0.4, 0.5), 0.3, 0.3, 0.3);
+        if (entities.isEmpty()) return;
+        for (Entity ent : entities) {
+            if (ent instanceof ArmorStand) {
+                if (ent.getCustomName() == null) return;
+                if (!ent.getCustomName().equals("FlammebleDiamondBlock")) return;
+                e.setDropItems(false);
+                e.getBlock().getWorld().dropItemNaturally(e.getBlock().getLocation(), new ItemBuilder().flammebleDiamondBlock());
+                ent.remove();
+            }
+        }
     }
 
     @EventHandler
@@ -51,13 +71,43 @@ public class FlammebleDiamond implements Listener {
             if (ent.getType().equals(EntityType.ARMOR_STAND)) {
                 if (!ent.getCustomName().equals("FlammebleDiamondBlock")) continue;
 
+                ArmorStand ar = (ArmorStand) ent;
+
                 e.setCancelled(true);
-                ent.remove();
                 e.getClickedBlock().setType(Material.AIR);
 
-                TNTPrimed tnt = e.getClickedBlock().getWorld().spawn(e.getClickedBlock().getLocation().add(0.5, 0, 0.5), TNTPrimed.class);
-                tnt.setCustomName("FlammebleDiamondBlock");
-                tnt.setCustomNameVisible(false);
+                ItemStack item1 = new ItemStack(Material.TNT);
+                ItemMeta meta1 = item1.getItemMeta();
+                meta1.setCustomModelData(100);
+                item1.setItemMeta(meta1);
+
+                ItemStack item2 = new ItemStack(Material.TNT);
+                ItemMeta meta2 = item2.getItemMeta();
+                meta2.setCustomModelData(200);
+                item2.setItemMeta(meta2);
+
+                ar.getEquipment().setHelmet(item2);
+
+                for (int i = 0; i < 8; i++) {
+                    Bukkit.getScheduler().runTaskLater(MixAnything.instance, () -> e.getClickedBlock().getWorld().spawnParticle(Particle.LAVA, e.getClickedBlock().getLocation().add(0.5, 1, 0.5), 50, 0.1, 0.1, 0.1, 0.1), i * 10);
+                }
+
+                Bukkit.getScheduler().runTaskLater(MixAnything.getInstance(), () -> ar.getEquipment().setHelmet(item1), 10);
+                Bukkit.getScheduler().runTaskLater(MixAnything.getInstance(), () -> ar.getEquipment().setHelmet(item2), 20);
+                Bukkit.getScheduler().runTaskLater(MixAnything.getInstance(), () -> ar.getEquipment().setHelmet(item1), 30);
+                Bukkit.getScheduler().runTaskLater(MixAnything.getInstance(), () -> ar.getEquipment().setHelmet(item2), 40);
+                Bukkit.getScheduler().runTaskLater(MixAnything.getInstance(), () -> ar.getEquipment().setHelmet(item1), 50);
+                Bukkit.getScheduler().runTaskLater(MixAnything.getInstance(), () -> ar.getEquipment().setHelmet(item2), 60);
+                Bukkit.getScheduler().runTaskLater(MixAnything.getInstance(), () -> ar.getEquipment().setHelmet(item1), 70);
+                Bukkit.getScheduler().runTaskLater(MixAnything.getInstance(), () -> ar.getEquipment().setHelmet(item2), 80);
+
+                Bukkit.getScheduler().runTaskLater(MixAnything.getInstance(), () -> {
+                    TNTPrimed tnt = e.getClickedBlock().getWorld().spawn(e.getClickedBlock().getLocation().add(0.5, 0, 0.5), TNTPrimed.class);
+                    tnt.setFuseTicks(0);
+                    tnt.setCustomName("FlammebleDiamondBlock");
+                    tnt.setCustomNameVisible(false);
+                    ar.remove();
+                }, 80);
             }
         }
     }

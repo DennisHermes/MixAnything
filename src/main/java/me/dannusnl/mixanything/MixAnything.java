@@ -7,7 +7,7 @@ import me.dannusnl.mixanything.flammablediamond.PickaxeThrow;
 import me.dannusnl.mixanything.luckyfoodblock.LuckyEating;
 import me.dannusnl.mixanything.luckyfoodblock.LuckyFoodBlock;
 import me.dannusnl.mixanything.mixingequipment.EquipmentPlacing;
-import me.dannusnl.mixanything.mixingequipment.MixingPotClick;
+import me.dannusnl.mixanything.mixingequipment.EquipmentClick;
 import me.dannusnl.mixanything.mixingequipment.RecipeBuilder;
 import me.dannusnl.mixanything.spikyiron.DamageMechanic;
 import me.dannusnl.mixanything.spikyiron.SpikeyRecipeBuilder;
@@ -67,7 +67,7 @@ public final class MixAnything extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new BlockRemoving(), this);
 
         getServer().getPluginManager().registerEvents(new EquipmentPlacing(), this);
-        getServer().getPluginManager().registerEvents(new MixingPotClick(), this);
+        getServer().getPluginManager().registerEvents(new EquipmentClick(), this);
 
         getServer().getPluginManager().registerEvents(new UnlockRecipes(), this);
         getServer().getPluginManager().registerEvents(new PreventMerge(), this);
