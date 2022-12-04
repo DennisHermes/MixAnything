@@ -1,0 +1,22 @@
+{
+    "overrides": [
+	{
+            "predicate": {
+                "custom_model_data": 0
+            },
+            "model": "item/tnt/tnt"
+        },
+        {
+            "predicate": {
+                "custom_model_data": 100
+            },
+            "model": "item/tnt/flammable"
+        },
+        {
+            "predicate": {
+                "custom_model_data": 200
+            },
+            "model": "item/tnt/exploding"
+        }
+    ]
+}

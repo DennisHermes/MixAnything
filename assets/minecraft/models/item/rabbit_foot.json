@@ -1,0 +1,152 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "item/rabbit_foot"
+    },
+    "overrides": [
+        {
+            "predicate": {
+                "custom_model_data": 100
+            },
+            "model": "item/rabbit_foot/blender"
+        },
+		{
+            "predicate": {
+                "custom_model_data": 200
+            },
+            "model": "item/rabbit_foot/jar"
+        },
+		{
+            "predicate": {
+                "custom_model_data": 300
+            },
+            "model": "item/rabbit_foot/mixer"
+        },
+		{
+            "predicate": {
+                "custom_model_data": 400
+            },
+            "model": "item/rabbit_foot/diamond"
+        },
+		{
+            "predicate": {
+                "custom_model_data": 500
+            },
+            "model": "item/rabbit_foot/iron"
+        },
+		{
+            "predicate": {
+                "custom_model_data": 600
+            },
+            "model": "item/rabbit_foot/ingot"
+        },
+		{
+            "predicate": {
+                "custom_model_data": 700
+            },
+            "model": "item/rabbit_foot/gui"
+        },
+		{
+            "predicate": {
+                "custom_model_data": 800
+            },
+            "model": "item/rabbit_foot/warden_head"
+        },
+		{
+            "predicate": {
+                "custom_model_data": 1000
+            },
+            "model": "item/rabbit_foot/diamondjar"
+        },
+		{
+            "predicate": {
+                "custom_model_data": 1100
+            },
+            "model": "item/rabbit_foot/emeraldjar"
+        },
+		{
+            "predicate": {
+                "custom_model_data": 1200
+            },
+            "model": "item/rabbit_foot/ironjar"
+        },
+		{
+            "predicate": {
+                "custom_model_data": 1300
+            },
+            "model": "item/rabbit_foot/sculkjar"
+        },
+		{
+            "predicate": {
+                "custom_model_data": 1400
+            },
+            "model": "item/rabbit_foot/diamondliquet"
+        },
+		{
+            "predicate": {
+                "custom_model_data": 1500
+            },
+            "model": "item/rabbit_foot/emeraldliquet"
+        },
+		{
+            "predicate": {
+                "custom_model_data": 1600
+            },
+            "model": "item/rabbit_foot/ironliquet"
+        },
+		{
+            "predicate": {
+                "custom_model_data": 1700
+            },
+            "model": "item/rabbit_foot/sculkliquet"
+        },
+		{
+            "predicate": {
+                "custom_model_data": 1800
+            },
+            "model": "item/rabbit_foot/smalltnt"
+        },
+		{
+            "predicate": {
+                "custom_model_data": 1900
+            },
+            "model": "item/rabbit_foot/smallhay"
+        },
+		{
+            "predicate": {
+                "custom_model_data": 2000
+            },
+            "model": "item/rabbit_foot/smalliron"
+        },
+		{
+            "predicate": {
+                "custom_model_data": 2100
+            },
+            "model": "item/rabbit_foot/diamondliquet1"
+        },
+		{
+            "predicate": {
+                "custom_model_data": 2200
+            },
+            "model": "item/rabbit_foot/emeraldliquet1"
+        },
+		{
+            "predicate": {
+                "custom_model_data": 2300
+            },
+            "model": "item/rabbit_foot/ironliquet1"
+        },
+		{
+            "predicate": {
+                "custom_model_data": 2400
+            },
+            "model": "item/rabbit_foot/sculkliquet1"
+        },
+		{
+            "predicate": {
+                "custom_model_data": 2500
+            },
+            "model": "item/rabbit_foot/spaceliquet1"
+        }
+    ]
+}
